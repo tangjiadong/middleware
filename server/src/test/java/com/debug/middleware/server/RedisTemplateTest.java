@@ -35,11 +35,11 @@ public class RedisTemplateTest {
         //Redis通用的操作组件
         ValueOperations valueOperations = redisTemplate.opsForValue();
         //将字符串信息写入缓存中
-        log.info("写入缓存中的内容: { }",content);
+        log.info("写入缓存中的内容:{}",content);
         valueOperations.set(key,content);
         //从缓存中读取内容
         Object result = valueOperations.get(key);
-        log.info("读取出来的内容: { }",result);
+        log.info("读取出来的内容:{}",result);
     }
 
     /**

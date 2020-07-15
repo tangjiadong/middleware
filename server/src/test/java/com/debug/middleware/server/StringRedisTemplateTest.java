@@ -39,10 +39,10 @@ public class StringRedisTemplateTest {
         final String content = "StringRedisTemplate Content";
         //Redis通用的操作组件
         ValueOperations valueOperations = stringRedisTemplate.opsForValue();
-        log.info("content",content);
+        log.info("写入缓存对象的信息:{}",content);
         valueOperations.set(key,content);
         Object result = valueOperations.get(key);
-        log.info("读取出来的内容:{ } ",result);
+        log.info("读取出来的内容:{}",result);
     }
 
     @Test
