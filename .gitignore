@@ -1,2 +1,13 @@
+target
+.mvn
+.settings
+.classpath
+.project
 .idea
 *.iml
+out
+build
+gen
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+powersql
