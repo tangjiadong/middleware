@@ -37,6 +37,7 @@ public class CachePassService {
     /**
      * 获取商品详情
      * 如果缓存有,则从缓存中获取;如果没有,则总数据库查询,并将查询结构放入缓存中
+     *
      * @param itemCode
      * @return
      */
@@ -44,30 +45,32 @@ public class CachePassService {
         //定义商品对象
         Item item = null;
         //定义缓存中真正的Key:由前缀和商品编码组成
-        final String key = keyPrefix+itemCode;
+        final String key = keyPrefix + itemCode;
+        log.info("service进入--------->>>>>");
         //定义Redis的操作组件ValueOperations
         ValueOperations valueOperations = redisTemplate.opsForValue();
-        if (redisTemplate.hasKey(key)){
-            log.info("---获取商品详情-缓存中存在该商品----商品编号为:{}",itemCode);
+        if (redisTemplate.hasKey(key)) {
+            log.info("---获取商品详情-缓存中存在该商品----商品编号为:{}", itemCode);
             //从缓存中查询该商品详情
             Object res = valueOperations.get(key);
-            if (res!=null && !Strings.isNullOrEmpty(res.toString())){
+            if (res != null && !Strings.isNullOrEmpty(res.toString())) {
                 //如果可以找到该商品,则进行JSON反序列化解析
                 item = objectMapper.readValue(res.toString(), Item.class);
-            }else {
-                //在缓存中没有找到该商品
-                log.info("---获取商品详情-缓存中不存在该商品-从数据库中查询---商品编号为:{}",itemCode);
-                //从数据库中获取该商品详情
-                item = itemMapper.selectByCode(itemCode);
-                if (item!=null){
-                    //如果数据库中查询到该商品,则将其序列化后并写入缓存中
-                    valueOperations.set(key,objectMapper.writeValueAsString(item));
-                } else {
-                    //过期失效时间设置为30min,根据业务决定
-                    valueOperations.set(key,"",30L, TimeUnit.MINUTES);
-                }
+            }
+        } else {
+            //在缓存中没有找到该商品
+            log.info("---获取商品详情-缓存中不存在该商品-从数据库中查询---商品编号为:{}", itemCode);
+            //从数据库中获取该商品详情
+            item = itemMapper.selectByCode(itemCode);
+            if (item != null) {
+                //如果数据库中查询到该商品,则将其序列化后并写入缓存中
+                valueOperations.set(key, objectMapper.writeValueAsString(item));
+            } else {
+                //过期失效时间设置为30min,根据业务决定
+                valueOperations.set(key, "", 30L, TimeUnit.MINUTES);
             }
         }
         return item;
     }
+
 }

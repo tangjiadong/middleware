@@ -36,6 +36,7 @@ public class CachePassController {
         resMap.put("code",0);
         resMap.put("msg","成功");
         try {
+            log.info("----商品编号为:{}",itemCode);
             resMap.put("data",cachePassService.getItemInfo(itemCode));
         } catch (Exception e) {
             resMap.put("code",-1);
