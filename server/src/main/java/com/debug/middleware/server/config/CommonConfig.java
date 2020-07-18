@@ -18,11 +18,12 @@ public class CommonConfig {
     //Redis链接工厂
     @Autowired
     private RedisConnectionFactory redisConnectionFactory;
+
     //缓存操作组件RedisTemplate的自定义配置
     @Bean
-    public RedisTemplate<String,Object> redisTemplate(){
+    public RedisTemplate<String, Object> redisTemplate() {
         //定义RedisTemplate实例
-        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<String,Object>();
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<String, Object>();
         //设置Redis链接工厂
         redisTemplate.setConnectionFactory(redisConnectionFactory);
         //指定大Key序列化策略为String序列化,value为JDK自带的序列化策略
@@ -35,7 +36,7 @@ public class CommonConfig {
 
     //缓存操作组件StringRedisTemplate
     @Bean
-    public StringRedisTemplate stringRedisTemplate(){
+    public StringRedisTemplate stringRedisTemplate() {
         //采用默认配置即可
         StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();
         stringRedisTemplate.setConnectionFactory(redisConnectionFactory);
