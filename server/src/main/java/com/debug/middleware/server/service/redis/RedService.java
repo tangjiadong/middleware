@@ -2,6 +2,7 @@ package com.debug.middleware.server.service.redis;
 
 import com.debug.middleware.model.entity.RedDetail;
 import com.debug.middleware.model.entity.RedRecord;
+import com.debug.middleware.model.entity.RedRobRecord;
 import com.debug.middleware.model.mapper.RedDetailMapper;
 import com.debug.middleware.model.mapper.RedRecordMapper;
 import com.debug.middleware.model.mapper.RedRobRecordMapper;
@@ -32,7 +33,7 @@ public class RedService implements IRedService {
     @Autowired
     private RedDetailMapper redDetailMapper;
     @Autowired
-    private RedRobRecordMapper recordMapper;
+    private RedRobRecordMapper redRobRecordMapper;
 
     /**
      * 记录发红包时红包的全局唯一标识串,随机金额列表和红包个数等信息入数据库
@@ -78,6 +79,13 @@ public class RedService implements IRedService {
     @Override
     @Async
     public void recordRobRedPacket(Integer userId, String redId, BigDecimal amount) throws Exception {
+        RedRobRecord redRobRecord = new RedRobRecord();
+        redRobRecord.setUserId(userId);
+        redRobRecord.setRedPacket(redId);//红包全局唯一标识串
+        redRobRecord.setAmount(amount);//设置抢到的红包金额
+        redRobRecord.setRobTime(new Date());//抢到的时间
+        //将实体对象信息插入到数据库中
+        redRobRecordMapper.insertSelective(redRobRecord);
 
     }
 }
