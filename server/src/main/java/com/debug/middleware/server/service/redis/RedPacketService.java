@@ -64,13 +64,75 @@ public class RedPacketService implements IRedPacketService {
     }
 
     /**
+     * 抢红包,分"点"与"抢"处理逻辑
+     * 加入分布式锁的情况
+     * @param userId
+     * @param redId
+     * @return
+     * @throws Exception
+     */
+    @Deprecated
+    @Override
+    public BigDecimal rob(Integer userId, String redId) throws Exception {
+        ValueOperations valueOperations = redisTemplate.opsForValue();
+        //在处理用户抢红包之前,先判断一下当前用户是否已经抢过该红包
+        //如果已经抢过了,则直接返回红包金额,并在前端显示出来
+        Object obj = valueOperations.get(redId + userId + ":rob");
+        if (obj != null) {
+            return new BigDecimal(obj.toString());
+        }
+        //"点红包"业务逻辑,主要用于判断缓存系统中是否仍然有红包,即红包剩余个数是否大于0
+        Boolean res = click(redId);
+        if (res) {
+            //************************************
+            //加分布式锁:一个红包每个人只能抢到一次随机金额,即永远保证一对一
+            //构造缓存中的Key
+            final String lockKey = redId+userId+"-lock";
+            //调用setIfAbsent()方法,简介实现分布式锁
+            Boolean lock = valueOperations.setIfAbsent(lockKey, redId);
+            //设定该分布式锁的过期时间为24小时
+            redisTemplate.expire(lockKey,24L,TimeUnit.HOURS);
+
+            try {
+                //res为true,则可以进入"抢红包"业务逻辑的处理
+                //首先是从小红包随机金额列表中弹出一个随机金额
+                Object value = redisTemplate.opsForList().rightPop(redId);
+                if (value != null) {
+                    //value不为空,即红包金额不为0,进而表示当前用户抢到一个红包,则可以进入后续的更新缓存与记录信息入数据库
+                    String redTotalKey = redId + ":total";
+                    //更新缓存中剩余的红包数,即红包个数减1
+                    Integer currTotal = valueOperations.get(redTotalKey) != null ? (Integer) valueOperations.get(redTotalKey) : 0;
+                    valueOperations.set(redTotalKey, currTotal - 1);
+                    //将红包金额返回给用户前,金额的单位设置为"元"
+                    BigDecimal result = new BigDecimal(value.toString()).divide(new BigDecimal(100));
+                    //记录抢到红包时用户的账号信息以及抢到的金额等信息入数据库
+                    redService.recordRobRedPacket(userId, redId, new BigDecimal(value.toString()));
+                    //将当前抢到红包的用户信息放置进缓存系统中,用于表示用户已经抢过
+                    //TTL为24小时
+                    valueOperations.set(redId + userId + ":rob", result, 24L, TimeUnit.HOURS);
+                    //输出当前用户抢到红包的记录信息
+                    log.info("当前用户抢到红包了:userId={} key{} 金额={} ", userId, redId, result);
+                    return result;
+                }
+            } catch (Exception e) {
+                throw new Exception("系统异常-抢红包-加分布式锁失败!");
+            }
+            //************************************
+        }
+
+        //null表示当前用户没有抢到红包
+        return null;
+    }
+
+    /**
      * 抢红包
      *
      * @param userId
      * @param redId
      * @return
      * @throws Exception
-     */
+     *//*
+    @Deprecated
     @Override
     public BigDecimal rob(Integer userId, String redId) throws Exception {
         ValueOperations valueOperations = redisTemplate.opsForValue();
@@ -106,7 +168,7 @@ public class RedPacketService implements IRedPacketService {
         }
         //null表示当前用户没有抢到红包
         return null;
-    }
+    }*/
 
     /**
      * 点红包
