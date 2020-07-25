@@ -22,8 +22,9 @@ public class RabbitmqTest {
     //定义基本消息模型中发送消息的生产者实例
     @Autowired
     private BasicPublisher basicPublisher;
+
     @Test
-    public void test1() throws Exception{
+    public void test1() throws Exception {
         //定义字符串值
         String msg = "~~~~这是一串字符串消息~~~~~";
         //生产者实例发送消息
