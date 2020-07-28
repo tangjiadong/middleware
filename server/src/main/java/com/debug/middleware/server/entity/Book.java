@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class Book {
-    private Integer bookNo;
-    private String name;
+    private Integer bookNo; //图书编号
+    private String name; //图书名称
 }

@@ -1,0 +1,58 @@
+七月 28, 2020 5:27:03 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: find multi modules in this project: [api, model, server]
+七月 28, 2020 5:27:04 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: find java src paths:  [/Users/Tang/JavaCode/JavaBooks/基于SpringBoot实现Java分布式中间件开发入门与实战/02/middleware/api/src/main/java/, /Users/Tang/JavaCode/JavaBooks/基于SpringBoot实现Java分布式中间件开发入门与实战/02/middleware/model/src/main/java/, /Users/Tang/JavaCode/JavaBooks/基于SpringBoot实现Java分布式中间件开发入门与实战/02/middleware/server/src/main/java/]
+七月 28, 2020 5:27:04 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: project type not set, try to figure out...
+七月 28, 2020 5:27:04 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: start find controllers in path : /Users/Tang/JavaCode/JavaBooks/基于SpringBoot实现Java分布式中间件开发入门与实战/02/middleware/api/src/main/java/
+七月 28, 2020 5:27:04 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: start find controllers in path : /Users/Tang/JavaCode/JavaBooks/基于SpringBoot实现Java分布式中间件开发入门与实战/02/middleware/model/src/main/java/
+七月 28, 2020 5:27:04 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: start find controllers in path : /Users/Tang/JavaCode/JavaBooks/基于SpringBoot实现Java分布式中间件开发入门与实战/02/middleware/server/src/main/java/
+七月 28, 2020 5:27:04 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: find controller file : BookController.java
+七月 28, 2020 5:27:04 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: find controller file : CachePassController.java
+七月 28, 2020 5:27:04 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: find controller file : RedPacketController.java
+七月 28, 2020 5:27:04 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: start to parse controller file : BookController.java
+七月 28, 2020 5:27:04 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: success to parse controller file : BookController.java
+七月 28, 2020 5:27:04 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: start to parse controller file : CachePassController.java
+七月 28, 2020 5:27:05 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: success to parse controller file : CachePassController.java
+七月 28, 2020 5:27:05 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: start to parse controller file : RedPacketController.java
+七月 28, 2020 5:27:05 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: we think T should not be an enum type
+七月 28, 2020 5:27:05 下午 io.github.yedaxia.apidocs.LogUtils warn
+警告: warning!! Cannot find java file , in java file : /Users/Tang/JavaCode/JavaBooks/基于SpringBoot实现Java分布式中间件开发入门与实战/02/middleware/api/src/main/java/com/debug/middleware/api/response/BaseResponse.java, className : T, we cannot found more information of it, you've better to make it a JavaBean
+七月 28, 2020 5:27:05 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: we think T should not be an enum type
+七月 28, 2020 5:27:05 下午 io.github.yedaxia.apidocs.LogUtils warn
+警告: warning!! Cannot find java file , in java file : /Users/Tang/JavaCode/JavaBooks/基于SpringBoot实现Java分布式中间件开发入门与实战/02/middleware/api/src/main/java/com/debug/middleware/api/response/BaseResponse.java, className : T, we cannot found more information of it, you've better to make it a JavaBean
+七月 28, 2020 5:27:05 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: success to parse controller file : RedPacketController.java
+七月 28, 2020 5:27:05 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: generate api docs start...
+七月 28, 2020 5:27:05 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: start to generate docs for controller file : /Users/Tang/JavaCode/JavaBooks/基于SpringBoot实现Java分布式中间件开发入门与实战/02/middleware/server/src/main/java/com/debug/middleware/server/controller/BookController.java
+七月 28, 2020 5:27:05 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: success to generate docs for controller file : /Users/Tang/JavaCode/JavaBooks/基于SpringBoot实现Java分布式中间件开发入门与实战/02/middleware/server/src/main/java/com/debug/middleware/server/controller/BookController.java
+七月 28, 2020 5:27:05 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: start to generate docs for controller file : /Users/Tang/JavaCode/JavaBooks/基于SpringBoot实现Java分布式中间件开发入门与实战/02/middleware/server/src/main/java/com/debug/middleware/server/controller/redis/CachePassController.java
+七月 28, 2020 5:27:05 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: success to generate docs for controller file : /Users/Tang/JavaCode/JavaBooks/基于SpringBoot实现Java分布式中间件开发入门与实战/02/middleware/server/src/main/java/com/debug/middleware/server/controller/redis/CachePassController.java
+七月 28, 2020 5:27:05 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: start to generate docs for controller file : /Users/Tang/JavaCode/JavaBooks/基于SpringBoot实现Java分布式中间件开发入门与实战/02/middleware/server/src/main/java/com/debug/middleware/server/controller/redis/RedPacketController.java
+七月 28, 2020 5:27:05 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: success to generate docs for controller file : /Users/Tang/JavaCode/JavaBooks/基于SpringBoot实现Java分布式中间件开发入门与实战/02/middleware/server/src/main/java/com/debug/middleware/server/controller/redis/RedPacketController.java
+七月 28, 2020 5:27:05 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: generate index start !!!
+七月 28, 2020 5:27:05 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: generate index done !!!
+七月 28, 2020 5:27:05 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: generate api docs done !!!

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RedPacketController</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/google-code-prettify@1.0.5/bin/prettify.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="PR.prettyPrint()">
+<nav class="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">
+                middleware
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/YeDaxia/JApiDocs" target="_blank">GitHub</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">V1.0<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="book with-summary">
+    <div class="book-summary">
+<div class="search-box form-group">
+    <input type="text" class="form-control" id="inputSearch" placeholder="搜索接口">
+    <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
+</div>
+<div id="accordion" class="catalog">
+        <div class="panel">
+            <div id="heading0" data-parent="#accordion" class="catalog-title" data-toggle="collapse"
+                 aria-expanded="true" data-target="#collapse0" aria-controls="collapse0">
+                <i class="glyphicon glyphicon-align-justify"></i> 图书接口
+            </div>
+            <div id="collapse0" class="collapse in " aria-labelledby="heading0">
+                    <a class="catalog-item" href="com_debug_middleware_server_controller_BookController.html#info">
+                        获取书籍对象信息
+                    </a>
+            </div>
+        </div>
+        <div class="panel">
+            <div id="heading1" data-parent="#accordion" class="catalog-title" data-toggle="collapse"
+                 aria-expanded="true" data-target="#collapse1" aria-controls="collapse1">
+                <i class="glyphicon glyphicon-align-justify"></i> CachePassController
+            </div>
+            <div id="collapse1" class="collapse " aria-labelledby="heading1">
+                    <a class="catalog-item" href="com_debug_middleware_server_controller_redis_CachePassController.html#getItem">
+                        获取热销商品信息
+                    </a>
+            </div>
+        </div>
+        <div class="panel">
+            <div id="heading2" data-parent="#accordion" class="catalog-title" data-toggle="collapse"
+                 aria-expanded="true" data-target="#collapse2" aria-controls="collapse2">
+                <i class="glyphicon glyphicon-align-justify"></i> RedPacketController
+            </div>
+            <div id="collapse2" class="collapse in " aria-labelledby="heading2">
+                    <a class="catalog-item" href="com_debug_middleware_server_controller_redis_RedPacketController.html#handOut">
+                        发红包请求,请求方式为POST,请求参数采用JSON格式进行提交
+                    </a>
+                    <a class="catalog-item" href="com_debug_middleware_server_controller_redis_RedPacketController.html#rob">
+                        抢红包请求:接收当前用户id和红包全局唯一标识串参数
+                    </a>
+            </div>
+        </div>
+</div>    </div>
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+                <div class="d-flex justify-content-between">
+                    <a class="header-menu toggle-catalog" href="javascript:void(0)"><i
+                            class="glyphicon glyphicon-align-justify"></i> 目录</a>
+                </div>
+            </div>
+            <div class="page-wrapper">
+                <div class="page-inner">
+                    <div class="action-list">
+                        <div class="action-item">
+<h2 id="handOut"><a href="#">发红包请求,请求方式为POST,请求参数采用JSON格式进行提交 </a></h2>
+<p><strong>请求URL</strong></p>
+<p>
+    <code>/red/packet/hand/out</code>
+        <span class="label label-default">POST</span>
+</p>
+    <p><strong>请求参数</strong></p>
+            <pre class="prettyprint lang-json">{
+	"userId":"int //用户id",
+	"total":"int //红包个数【必须】",
+	"amount":"int //总金额,单位为分【必须】"
+}</pre>
+    <p><strong>返回结果</strong></p>
+    <pre class="prettyprint lang-json">{
+	"code":"int //状态码",
+	"msg":"string //描述信息",
+	"data":{}
+}</pre>
+        <div class="form-group">
+            <a type="button" class="btn btn-sm btn-default" href="javaCodes/com_debug_middleware_server_controller_redis_RedPacketController_handOut_BaseResponse.html"><i class="fa fa-android" aria-hidden="true"></i> Android Model</a>
+            <a type="button" class="btn btn-sm btn-default" href="iosCodes/com_debug_middleware_server_controller_redis_RedPacketController_handOut_BaseResponse.html"><i class="fa fa-apple" aria-hidden="true"></i> iOS Model</a>
+        </div>
+                        </div>
+                        <hr>
+                        <div class="action-item">
+<h2 id="rob"><a href="#">抢红包请求:接收当前用户id和红包全局唯一标识串参数 </a></h2>
+<p><strong>请求URL</strong></p>
+<p>
+    <code>/red/packet/rob</code>
+        <span class="label label-default">GET</span>
+</p>
+    <p><strong>请求参数</strong></p>
+        <table class="table table-bordered">
+            <tr>
+                <th>参数名</th>
+                <th>类型</th>
+                <th>必须</th>
+                <th>描述</th>
+            </tr>
+                <tr>
+                    <td>userId</td>
+                    <td>int</td>
+                    <td>是</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>redId</td>
+                    <td>string</td>
+                    <td>是</td>
+                    <td></td>
+                </tr>
+        </table>
+    <p><strong>返回结果</strong></p>
+    <pre class="prettyprint lang-json">{
+	"code":"int //状态码",
+	"msg":"string //描述信息",
+	"data":{}
+}</pre>
+        <div class="form-group">
+            <a type="button" class="btn btn-sm btn-default" href="javaCodes/com_debug_middleware_server_controller_redis_RedPacketController_rob_BaseResponse.html"><i class="fa fa-android" aria-hidden="true"></i> Android Model</a>
+            <a type="button" class="btn btn-sm btn-default" href="iosCodes/com_debug_middleware_server_controller_redis_RedPacketController_rob_BaseResponse.html"><i class="fa fa-apple" aria-hidden="true"></i> iOS Model</a>
+        </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/google-code-prettify@1.0.5/bin/prettify.min.js"></script>
+<script>
+
+    var search_source_data = [
+            {name: '图书接口.获取书籍对象信息', url: 'com_debug_middleware_server_controller_BookController.html#info'},
+            {name: 'CachePassController.获取热销商品信息', url: 'com_debug_middleware_server_controller_redis_CachePassController.html#getItem'},
+            {name: 'RedPacketController.发红包请求,请求方式为POST,请求参数采用JSON格式进行提交', url: 'com_debug_middleware_server_controller_redis_RedPacketController.html#handOut'},
+            {name: 'RedPacketController.抢红包请求:接收当前用户id和红包全局唯一标识串参数', url: 'com_debug_middleware_server_controller_redis_RedPacketController.html#rob'},
+    ];
+
+
+
+    $('.toggle-catalog').click(function () {
+        $('.book').toggleClass('with-summary');
+    });
+
+    $('#inputSearch').autocomplete({hint: false}, [
+        {
+            source: function (query, callback) {
+                var result = [];
+                for(var i = 0; i !== search_source_data.length; i++){
+                    if(search_source_data[i].name.indexOf(query) !== -1){
+                        result.push(search_source_data[i]);
+                    }
+                }
+                callback(result);
+            },
+            displayKey: 'name',
+            templates: {
+                suggestion: function (suggestion) {
+                    return suggestion.name;
+                }
+            }
+        }
+    ]).on('autocomplete:selected', function (event, suggestion, dataset, context) {
+        self.location = suggestion.url;
+    });
+</script>
+</body>
+</html>
