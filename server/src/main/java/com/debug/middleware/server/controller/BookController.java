@@ -20,12 +20,13 @@ public class BookController {
 
     /**
      * 获取书籍对象信息
-     * @param bookNo 图书编号
+     *
+     * @param bookNo   图书编号
      * @param bookName 图书名称
      * @return
      */
-    @RequestMapping(value = "info",method = {RequestMethod.GET,RequestMethod.POST})
-    public Book info(Integer bookNo,String bookName){
+    @RequestMapping(value = "info", method = {RequestMethod.GET, RequestMethod.POST})
+    public Book info(Integer bookNo, String bookName) {
         Book book = new Book();
         book.setBookNo(bookNo);
         book.setName(bookName);
